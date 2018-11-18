@@ -146,6 +146,29 @@ public:
 	COnlyOneApp(LPCTSTR pszAppFlag)
 	: m_dwProcID(0), m_bIsFirstApp(FALSE)
 	{
+		//HANDLE WINAPI CreateFileMapping(
+		//	_In_HANDLE hFile,
+		//	_In_opt_LPSECURITY_ATTRIBUTES lpAttributes,
+		//	_In_DWORD flProtect,
+		//	_In_DWORD dwMaximumSizeHigh,
+		//	_In_DWORD dwMaximumSizeLow,
+		//	_In_opt_LPCTSTR lpName);
+		//	创建一个新的文件映射内核对象。
+		//	返回值
+		//	Long，新建文件映射对象的句柄；零意味着出错。
+		//	hFile:Long，指定欲在其中创建映射的一个文件句柄。0xFFFFFFFF（-1，即INVALID_HANDLE_VALUE）表示在页面文件中创建一个可共享的文件映射。
+		//	lpFileMappigAttributes:SECURITY_ATTRIBUTES，它指明返回的句柄是否可以被子进程所继承，指定一个安全对象，在创建文件映射时使用。如果为NULL（用ByVal As Long传递零），表示使用默认安全对象。
+		//	flProtect:Long，下述常数之一：
+		//PAGE_READONLY 以只读方式打开映射
+		//	PAGE_READWRITE 以可读、可写方式打开映射
+		//	PAGE_WRITECOPY 为写操作留下备份
+		//	可组合使用下述一个或多个常数：
+		//	SEC_COMMIT 为文件映射一个小节中的所有页分配内存
+		//	SEC_IMAGE 文件是个可执行文件
+		//	SEC_RESERVE 为没有分配实际内存的一个小节保留虚拟内存空间
+		//	dwMaximumSizeHigh:Long，文件映射的最大长度的高32位。
+		//	dwMaximumSizeLow:Long，文件映射的最大长度的低32位。如这个参数和dwMaximumSizeHigh都是零，就用磁盘文件的实际长度。
+		//	lpName:String，指定文件映射对象的名字。如存在这个名字的一个映射，函数就会打开它。用vbNullString可以创建一个无名的文件映射。
 		m_hMap = ::CreateFileMapping(INVALID_HANDLE_VALUE, nullptr, PAGE_READWRITE, 0, sizeof(DWORD), pszAppFlag);
 
 		if(m_hMap)
