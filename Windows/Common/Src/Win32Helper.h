@@ -169,6 +169,7 @@ public:
 		//	dwMaximumSizeHigh:Long，文件映射的最大长度的高32位。
 		//	dwMaximumSizeLow:Long，文件映射的最大长度的低32位。如这个参数和dwMaximumSizeHigh都是零，就用磁盘文件的实际长度。
 		//	lpName:String，指定文件映射对象的名字。如存在这个名字的一个映射，函数就会打开它。用vbNullString可以创建一个无名的文件映射。
+		//	
 		m_hMap = ::CreateFileMapping(INVALID_HANDLE_VALUE, nullptr, PAGE_READWRITE, 0, sizeof(DWORD), pszAppFlag);
 
 		if(m_hMap)
