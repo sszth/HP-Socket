@@ -39,6 +39,9 @@
     <ClInclude Include="GeneralHelper.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="SocketInterface.h">
+      <Filter>HPSocket\Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

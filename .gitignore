@@ -13,6 +13,7 @@
 *.tlog
 *.cki
 *.exe.config
+*.user
 
 # Compiled Dynamic libraries
 #*.so
@@ -46,6 +47,6 @@ readme/
 *.swp
 *.suo
 .vs/
-
+*.user
 # include directory symbolic link files
 Linux/lib/**/*.so.*

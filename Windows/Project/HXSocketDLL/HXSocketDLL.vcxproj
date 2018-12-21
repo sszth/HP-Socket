@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="GeneralHelper.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SocketInterface.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HXSocketDLL.cpp" />
