@@ -211,9 +211,14 @@ _WIN32_WINNT_WIN10		0x0A00
 
 
 //socketͷ
+#include "Singleton.h"
+
+#include "CriticalSection.h"
+
+#include "PrivateHeap.h"
 
 
 #if defined (_DEBUG) && defined (_DETECT_MEMORY_LEAK)
-#include "debug/win32_crtdbg.h"
+#include "win32_crtdbg.h"
 #endif
 

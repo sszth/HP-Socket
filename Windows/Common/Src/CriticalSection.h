@@ -61,10 +61,11 @@ public:
 
 	CRITICAL_SECTION* GetObject()			{return &m_crisec;}
 
-private:
-	CInterCriSec(const CInterCriSec& cs);
-	CInterCriSec operator = (const CInterCriSec& cs);
+//private:
+//	CInterCriSec(const CInterCriSec& cs);
+//	CInterCriSec operator = (const CInterCriSec& cs);
 
+	DECLARE_PRIVATE_COPY_CONSTRUCTOR(CInterCriSec)
 private:
 	CRITICAL_SECTION m_crisec;
 };

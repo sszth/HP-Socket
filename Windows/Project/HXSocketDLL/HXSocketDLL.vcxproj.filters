@@ -31,24 +31,60 @@
     <Filter Include="HPSocket\Public">
       <UniqueIdentifier>{a904c863-ccf4-4e72-9636-e7d5645f26ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HPSocket\UDP">
+      <UniqueIdentifier>{4c74fd0e-55d1-4cd3-b19f-2fb5c1b277c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\BUG">
+      <UniqueIdentifier>{4a3c2c14-84bb-46cc-b73f-093c26f162de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="GeneralHelper.h">
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="SocketInterface.h">
       <Filter>HPSocket\Public</Filter>
     </ClInclude>
+    <ClInclude Include="HPTypeDef.h">
+      <Filter>HPSocket\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="UdpClient.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CriticalSection.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="win32_crtdbg.h">
+      <Filter>Common\BUG</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BufferPool.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="PrivateHeap.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="HXSocketDLL.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UdpClient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="win32_crtdbg.cpp">
+      <Filter>Common\BUG</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BufferPool.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
