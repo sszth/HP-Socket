@@ -2,6 +2,8 @@
 
 #include "Singleton.h"
 
+#include "PrivateHeap.h"
+
 #pragma warning(push)
 #pragma warning(disable: 4458)
 

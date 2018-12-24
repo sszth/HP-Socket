@@ -97,4 +97,65 @@ public:
 
 		return pv;
 	}
+
+	SIZE_T Compact(DWORD dwFlags = 0) { return 0; }
+	SIZE_T Size(PVOID pvMemory, DWORD dwFlags = 0) { return _msize(pvMemory); }
+
+	BOOL IsValid() { return TRUE; }
+	BOOL Reset() { return TRUE; }
+public:
+	CGlobalHeapImpl(DWORD dwOptions = 0, SIZE_T dwInitSize = 0, SIZE_T dwMaxSize = 0){}
+	~CGlobalHeapImpl(){}
+
+	operator HANDLE() { return nullptr; }
+	DECLARE_NO_COPY_CLASS(CGlobalHeapImpl)
 };
+
+#ifndef _NOT_USE_PRIVATE_HEAP
+	typedef CPrivateHeapImpl CPrivateHeap;
+#else
+	typedef CGlobalHeapImpl CPrivateHeap;
+#endif // !_NOT_USE_PRIVATE_HEAP
+
+template<class T>
+class CPrivateHeapBuffer
+{
+public:
+	CPrivateHeapBuffer(CPrivateHeap& hpPrivate, SIZE_T dwSize = 0) 
+	{}
+public:
+	T * Alloc(SIZE_T dwSize, DWORD dwFlags = 0)
+	{
+		if (IsValid())
+		{
+			Free();
+		}
+
+		if (dwSize > 0)
+		{
+			m_pvMemory = (T*)m_hpPrivate.Alloc(dwSize * sizeof(t), dwFlags);
+		}
+		//不用考虑new（0）重新分配内存叶这种情况么
+		return m_pvMemory;
+	}
+
+	T * ReAlloc(SIZE_T dwSize, DWORD dwFlags = 0)
+	{
+		return m_pvMemory = (T*)m_hpPrivate.ReAlloc(m_pvMemory, dwSize * sizeof(T), dwFlags);
+	}
+
+	BOOL IsValid() { return m_pvMemory != nullptr; }
+	operator T * () const { return m_pvMemory; }
+	T & operator[] ( int i ) const { return *(m_pvMemory)+i; }
+
+	DECLARE_NO_COPY_CLASS(CPrivateHeapBuffer)
+private:
+	CPrivateHeap &	m_hpPrivate;
+	T *				m_pvMemory;
+};
+
+
+
+
+
+
